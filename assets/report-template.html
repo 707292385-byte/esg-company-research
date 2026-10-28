@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天马微电子（深天马A）ESG 调研报告</title>
+<style>
+  :root {
+    --ink: #24292f;
+    --muted: #6b7280;
+    --line: #e5e8ee;
+    --accent: #2456a6;
+    --accent-soft: #eef3fb;
+    --warn: #b45309;
+    --warn-soft: #fdf6ec;
+    --card: #ffffff;
+    --bg: #f5f6f8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 20px 48px;
+    font-family: "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", sans-serif;
+    color: var(--ink); background: var(--bg);
+    font-size: 14px; line-height: 1.8;
+  }
+  .page { max-width: 1000px; margin: 0 auto; }
+  header.report-head {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 24px 28px; margin-bottom: 20px;
+  }
+  header.report-head h1 { font-size: 22px; margin: 0 0 8px; }
+  header.report-head .meta { color: var(--muted); font-size: 12px; }
+  section.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 22px 28px; margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 17px; margin: 0 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  h2 .no { color: var(--accent); font-size: 15px; font-weight: 700; }
+  h3 { font-size: 14.5px; margin: 18px 0 8px; color: var(--accent); }
+  p { margin: 8px 0; }
+  sup.src { font-size: 11px; position: relative; }
+  sup.src > a {
+    color: var(--accent); text-decoration: none; cursor: pointer;
+    display: inline-block; position: relative;
+  }
+  sup.src > a::after {
+    content: attr(data-tip);
+    display: none;
+    position: absolute; bottom: 150%; left: 50%; transform: translateX(-50%);
+    background: #303646; color: #fff; font-size: 12px; line-height: 1.5;
+    padding: 8px 12px; border-radius: 8px; white-space: nowrap;
+    max-width: 460px; overflow: hidden; text-overflow: ellipsis;
+    box-shadow: 0 4px 14px rgba(0,0,0,.18); z-index: 50; font-weight: 400;
+  }
+  sup.src > a:hover::after { display: block; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 14px; font-size: 13px; }
+  th, td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--accent-soft); font-weight: 600; }
+  td.num, th.num { white-space: nowrap; }
+  td.center, th.center { text-align: center; }
+  tr.hl td { background: #fbf7ee; }
+  .placeholder { color: var(--muted); font-style: italic; }
+  .manual { color: var(--warn); background: var(--warn-soft); padding: 1px 6px; border-radius: 4px; }
+  .boundary {
+    background: var(--accent-soft); border-radius: 8px;
+    padding: 10px 14px; margin: 12px 0 0; color: #44506a; font-size: 12.5px;
+  }
+  details.fold { margin: 8px 0; }
+  details.fold summary {
+    cursor: pointer; color: var(--accent); font-size: 13px;
+    padding: 6px 0; user-select: none;
+  }
+  ul.topics li { margin: 6px 0; }
+  a { color: var(--accent); }
+  footer.report-foot { color: var(--muted); font-size: 12px; text-align: center; padding: 8px 0 0; }
+  @media print { body { background: #fff; padding: 0; } section.card, header.report-head { border: none; padding: 10px 0; } }
+</style>
+</head>
+<body>
+
+  <!-- 报告结构骨架（社区首页风格：浅灰底 + 白色圆角卡片，无背景图）
+  <header class="report-head"> 标题 + meta（证券简称/生成日期/编制说明：[n] 上标悬浮显示来源、点击打开原文） </header>
+  <section class="card"> 概览：基本信息表 + 「最新 ESG 评级与行业排名」总结段 + 表（机构/最新评级/日期/行业排名）+ 数据完整度说明 </section>
+  <section class="card"> 1 公司概况 </section>
+  <section class="card"> 2 ESG 治理架构：层级职责表 + 治理数据 + 实质性议题 </section>
+  <section class="card"> 3 ESG 制度体系：清单表 </section>
+  <section class="card"> 4 ESG 报告披露情况：
+      总结段（累计披露年数 / 名称沿革 / 发布时段 / 特殊年份说明 / 编制依据）
+      近三年报告表
+      <details class="fold"><summary>▼ 更早年份报告（点击展开）</summary> 旧报告表 + 缺失年份注 </details>
+  </section>
+  <section class="card"> 5 ESG 评级对照：
+      总结段①（各机构总体水平与分化说明，国际 vs 国内、数据时滞）
+      总结段②（自身变动趋势 + 行业相对位置）
+      一张大表：<tr rowspan> 评级机构 / 近三年评级 / 较上年变动 / 行业排名 / 同业最新评级×3列（表头两行）
+      本公司行加 class="hl" 高亮
+  </section>
+  <section class="card"> 6 新闻与奖项 </section>
+  <section class="card"> 7 关键绩效摘要 </section>
+  <section class="card"> 8 承诺与目标 </section>
+  <section class="card"> 9 负面舆情与处罚（开关章节，关闭时整节删除） </section>
+  <section class="card"> 10 拜访话题建议 </section>
+  <section class="card"> 附录 资料来源清单：两列表（编号 / 来源标题超链接＋括注发布方日期），无 URL 列、无查询日期列 </section>
+  -->
+
+  <footer class="report-foot">本报告由 AI 基于公开信息辅助整理，供内部研究参考。</footer>
+
+</div>
+</body>
+</html>
